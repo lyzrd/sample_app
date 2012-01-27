@@ -14,6 +14,16 @@ describe SessionsController do
       get :new
       response.should have_selector("title", :content => "Sign in")
     end
+    
+    it "should have an email field" do
+      get :new
+      response.should have_selector("input[name='session[email]'][type='text']")
+    end
+    
+    it "should have password field" do
+      get :new
+      response.should have_selector("input[name='session[password]'][type='password']")
+    end
   end
   
   describe "POST 'create'" do
